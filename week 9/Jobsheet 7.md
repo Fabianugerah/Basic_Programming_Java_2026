@@ -130,7 +130,8 @@ Berikut adalah tampilan _output_ setelah program dijalankan:
   ```
 
   - **Output Program:**
-  ![Output Pertanyaan 4 - Percobaan 1](assets/percobaan1_pertanyaan4.png)
+
+    ![Output Pertanyaan 4 - Percobaan 1](assets/percobaan1_pertanyaan4.png)
 
 ---
 
@@ -318,7 +319,9 @@ Berikut adalah daftar tugas yang dikerjakan pada Jobsheet ini:
 - Jika pelanggan membeli lebih dari 10 tiket, pelanggan mendapatkan diskon 15%.
 - Jika input jumlah tiket tidak valid (negatif), program akan mengabaikan input tersebut dan meminta input ulang.
 - [x] **Tugas 2:** Perhatikan flowchart berikut!
-![Flowchart Tugas 2](assets/flowchart-tugas2.png)
+
+    ![Flowchart Tugas 2](assets/flowchart-tugas2.png)
+
 Sebuah tempat parkir ingin membuat program untuk menghitung total pembayaran parkir dari beberapa kendaraan. Tarif parkir adalah `Rp 3.000` per jam untuk mobil dan `Rp 2.000` per jam untuk motor. Program akan terus meminta masukan selama input bukan 0. Implementasikan flowchart tersebut ke dalam bentuk kode program Java!
 
 ### 4.1 Tugas 1: Total Penjualan Tiket Bioskop
