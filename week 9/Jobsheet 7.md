@@ -73,7 +73,8 @@ Berikut adalah tampilan _output_ setelah program dijalankan:
   - **Jawab:** Nilai mahasiswa berada pada rentang 0 sampai 100. Dengan `tertinggi = 0`, nilai pertama yang masuk pasti lebih besar atau sama dengan 0 sehingga bisa menggantikannya. Dengan `terendah = 100`, nilai pertama pasti kurang dari atau sama dengan 100 sehingga bisa menggantikannya. Jika dibalik (`tertinggi = 100` dan `terendah = 0`), kondisi `nilai > tertinggi` dan `nilai < terendah` tidak pernah bernilai `true` untuk nilai 0-100, sehingga hasilnya selalu salah: `tertinggi` tetap 100 dan `terendah` tetap 0.
 
   - **Output Program:**
-  ![Output Pertanyaan 2 - Percobaan 1](assets/percobaan1_pertanyaan2.png)
+
+    ![Output Pertanyaan 2 - Percobaan 1](assets/percobaan1_pertanyaan2.png)
 
 - **Pertanyaan 3:** Jelaskan fungsi dan alur kerja dari potongan kode berikut!
 
