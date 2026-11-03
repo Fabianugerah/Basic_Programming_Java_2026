@@ -33,6 +33,7 @@ import java.util.Scanner;
 public class Star14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.print("Masukkan nilai n = ");
         int n = sc.nextInt();
 
@@ -40,6 +41,7 @@ public class Star14 {
             System.out.print("*");
         }
         System.out.println();
+
         sc.close();
     }
 }
@@ -47,7 +49,7 @@ public class Star14 {
 
 #### 2.1.2 Hasil Running / Screenshot Output
 
-![Output Percobaan 1](/week%208/assets/Output%20Percobaan%201.png)
+![Output Percobaan 1](assets/output_percobaan1.png)
 
 | Uji | Input n | Output | Jumlah `*` |
 | :-: | :-: | :-: | :-: |
@@ -63,7 +65,7 @@ public class Star14 {
 - **Pertanyaan 2:** Jika kondisi `i <= n` diganti menjadi `i < n`, berapa kali perulangan dijalankan saat n = 5? Mengapa berbeda?
   - **Jawab:** Perulangan berjalan **4 kali** (`i` = 1, 2, 3, 4). Saat `i = 5`, kondisi `5 < 5` bernilai `false` sehingga berhenti. Pada `i <= n`, `5 <= 5` masih `true`, jadi berjalan 5 kali. Perbedaannya ada pada operator `<=` yang menyertakan batas, sedangkan `<` tidak.
 
-- **Pertanyaan 3:** Prediksi output potongan kode berikut ketika n = 9, lalu modifikasi agar mencetak bilangan ganjil positif yang tidak melebihi n.
+- **Pertanyaan 3:** Prediksi output potongan kode berikut ketika n = 9, kemudian buktikan dengan mengganti perulangan `FOR` pada program anda dan menjalankannya.
 
   ```java
   for (int i = 2; i <= n; i += 2) {
@@ -71,40 +73,45 @@ public class Star14 {
   }
   ```
 
-  - **Jawab:** Prediksi output: `2 4 6 8 ` (nilai `i` = 2, 4, 6, 8; berikutnya 10 > 9 sehingga berhenti). Modifikasi untuk bilangan ganjil:
+  Modifikasi kode tersebut agar mencetak bilangan **ganjil** positif yang tidak melebihi n.
 
-```java
-import java.util.Scanner;
+  - **Jawab:** Prediksi output: `2 4 6 8` (nilai `i` = 2, 4, 6, 8; ).
+  Modifikasi code program untuk bilangan ganjil:
+    - **Kode Program:**
 
-// Pertanyaan 3 (Percobaan 1): prediksi + modifikasi bilangan ganjil
-public class StarGanjil14 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Masukkan nilai n = ");
-        int n = sc.nextInt();
+        ```java
+        import java.util.Scanner;
 
-        // Kode soal: untuk n = 9 mencetak "2 4 6 8 "
-        System.out.print("Bilangan genap: ");
-        for (int i = 2; i <= n; i += 2) {
-            System.out.print(i + " ");
+        public class Star14 {
+            public static void main(String[] args) {
+                Scanner sc = new Scanner(System.in);
+
+                System.out.print("Masukkan nilai n = ");
+                int n = sc.nextInt();
+
+                System.out.print("Bilangan genap: ");
+                for (int i = 2; i <= n; i += 2) {
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+
+                System.out.print("Bilangan ganjil: ");
+                for (int i = 1; i <= n; i += 2) {
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+
+                sc.close();
+            }
         }
-        System.out.println();
+        ```
 
-        // Modifikasi: bilangan ganjil positif <= n
-        System.out.print("Bilangan ganjil: ");
-        for (int i = 1; i <= n; i += 2) {
-            System.out.print(i + " ");
-        }
-        System.out.println();
-        sc.close();
-    }
-}
-```
+    - **Output Program:**
 
-    Untuk n = 9 hasilnya `1 3 5 7 9 `.
+        ![Output Pertanyaan 3 - Percobaan 1](assets/percobaan1_pertanyaan3.png)
 
-- **Pertanyaan 4:** Jelaskan mengapa perubahan `i++` menjadi `i--` (kondisi tetap `i <= n`) membuat perulangan tidak berhenti dalam waktu wajar.
-  - **Jawab:** `i` dimulai dari 1 lalu terus berkurang (0, -1, -2, ...), sehingga `i <= n` selalu `true` dan kondisi berhenti tidak pernah tercapai. Perulangan baru berhenti jika `i` melewati batas bawah `int` lalu *overflow* menjadi bilangan positif yang sangat besar, yang butuh lebih dari 2 miliar putaran. Praktisnya ini menjadi perulangan tak hingga.
+- **Pertanyaan 4:** Jelaskan mengapa perubahan increment `i++` menjadi `i--` (dengan kondisi tetap i <= n) membuat perulangan berjalan terus-menerus dan tidak berhenti dalam waktu wajar untuk `n` positif. Jangan menjalankan versi tersebut; jika terlanjur berjalan, hentikan program dengan menekan Ctrl + C pada terminal.
+  - **Jawab:** `i` dimulai dari 1 lalu terus berkurang (0, -1, -2, ...), sehingga kondisi `i <= n` selalu bernilai `true` dan kondisi berhenti tidak pernah tercapai. Praktisnya ini akan menjadi perulangan tak hingga.
 
 ---
 
@@ -120,17 +127,19 @@ import java.util.Scanner;
 public class Rectangle14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Masukkan jumlah baris: ");
         int baris = sc.nextInt();
         System.out.print("Masukkan jumlah kolom: ");
         int kolom = sc.nextInt();
-
+ 
         for (int i = 1; i <= baris; i++) {          // outer loop: baris
             for (int j = 1; j <= kolom; j++) {      // inner loop: kolom
-                System.out.print("#");              // Pertanyaan 5: karakter diganti #
+                System.out.print("*");
             }
             System.out.println();                   // pindah baris
         }
+
         sc.close();
     }
 }
@@ -138,30 +147,59 @@ public class Rectangle14 {
 
 #### 2.2.2 Hasil Running / Screenshot Output
 
-![Output Percobaan 2](/week%208/assets/Output%20Percobaan%202.png)
+![Output Percobaan 2](assets/output_percobaan2.png)
 
 | Uji | Baris | Kolom | Bentuk Output |
 | :-: | :-: | :-: | :-: |
-| 1 | 3 | 6 | 3 baris × 6 karakter |
-| 2 | 4 | 2 | 4 baris × 2 karakter |
-| 3 | 1 | 5 | 1 baris × 5 karakter |
+| 1 | 3 | 6 | 3 baris × 6 kolom |
+| 2 | 4 | 2 | 4 baris × 2 kolom |
+| 3 | 1 | 5 | 1 baris × 5 kolom |
 
 #### 2.2.3 Jawaban Pertanyaan / Pertanyaan Refleksi
 
-- **Pertanyaan 1:** Tentukan fungsi variabel `i` dan `j`.
+- **Pertanyaan 1:** Tentukan fungsi variabel `i` dan `j` pada program tersebut.
   - **Jawab:** `i` adalah penghitung **baris** (outer loop), sedangkan `j` adalah penghitung **kolom** (inner loop).
 
 - **Pertanyaan 2:** Berapa kali *outer loop*, *inner loop*, dan `print("*")` dijalankan untuk baris = 4 dan kolom = 7?
-  - **Jawab:** *Outer loop* berjalan **4 kali**. *Inner loop* dimulai 4 kali dan tiap kali berjalan 7 putaran, sehingga totalnya **28 putaran**. Perintah `print("*")` dijalankan **28 kali** (4 × 7).
+  - **Jawab:** *Outer loop* berjalan **4** kali. *Inner loop* berjalan **7** kali. Perintah `print("*")` dijalankan **28 kali** (4 Baris (*Outer loop*) × 7 Kolom (*Inner loop)*).
 
-- **Pertanyaan 3:** Apa yang terjadi jika batas perulangan luar dan dalam ditukar (outer = `kolom`, inner = `baris`) untuk baris = 3 dan kolom = 6?
-  - **Jawab:** *Outer loop* berjalan 6 kali dan tiap kali *inner loop* mencetak 3 karakter, sehingga hasilnya **6 baris × 3 karakter** (bukan 3 baris × 6 karakter). Jumlah total tetap 18, tetapi bentuknya tertukar.
+- **Pertanyaan 3:** Apa yang terjadi jika batas perulangan luar dan dalam ditukar (outer menggunakan `kolom`, inner menggunakan `baris`)? Gunakan untuk baris = 3 dan kolom = 6 untuk menjelaskan.
+  - **Jawab:** *Outer loop* berjalan 6 kali dan tiap kali *inner loop* mencetak 3 kolom, sehingga hasilnya **6 baris × 3 kolom** (bukan 3 baris × 6 kolom). Jumlah total tetap 18, tetapi bentuknya tertukar.
 
 - **Pertanyaan 4:** Jelaskan akibat penghapusan `System.out.println();` setelah *inner loop*.
-  - **Jawab:** Kursor tidak pindah baris, sehingga seluruh karakter tercetak dalam **satu baris panjang** (untuk 3 × 6 menjadi 18 karakter berderet).
+  - **Jawab:** Kursor tidak pindah baris, sehingga seluruh karakter tercetak dalam satu baris panjang atau berderet.
 
 - **Pertanyaan 5:** Modifikasi program agar karakter yang dicetak adalah `#`.
-  - **Jawab:** Perintah `System.out.print("*")` diganti menjadi `System.out.print("#")` (sudah diterapkan pada kode di atas).
+  - **Jawab:** Perintah `System.out.print("*")` diganti menjadi `System.out.print("#")`
+    - **Kode Program:**
+
+        ```java
+            import java.util.Scanner;
+
+            public class Rectangle14 {
+                public static void main(String[] args) {
+                    Scanner sc = new Scanner(System.in);
+
+                    System.out.print("Masukkan jumlah baris: ");
+                    int baris = sc.nextInt();
+                    System.out.print("Masukkan jumlah kolom: ");
+                    int kolom = sc.nextInt();
+            
+                    for (int i = 1; i <= baris; i++) {          // outer loop: baris
+                        for (int j = 1; j <= kolom; j++) {      // inner loop: kolom
+                            System.out.print("#"); // Baris yang diubah
+                        }
+                        System.out.println();                   // pindah baris
+                    }
+
+                    sc.close();
+                }
+            }
+        ```
+
+    - **Output Program:**
+
+        ![Output Pertanyaan 5 - Percobaan 2](assets/percobaan2_pertanyaan5.png)
 
 ---
 
@@ -179,6 +217,7 @@ import java.util.Scanner;
 public class Triangle14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Masukkan nilai n = ");
         int n = sc.nextInt();
 
@@ -191,6 +230,7 @@ public class Triangle14 {
             }
             i++;
         }
+
         sc.close();
     }
 }
@@ -204,10 +244,10 @@ import java.util.Scanner;
 public class Triangle14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Masukkan nilai n = ");
         int n = sc.nextInt();
 
-        // Segitiga bertingkat (sudah diperbaiki)
         int i = 1;                      // perbaikan: mulai dari 1, bukan 0
         while (i <= n) {                // berjalan tepat n kali
             int j = 0;                  // di-reset setiap baris
@@ -230,6 +270,7 @@ public class Triangle14 {
             System.out.println();
             i--;
         }
+
         sc.close();
     }
 }
@@ -237,7 +278,7 @@ public class Triangle14 {
 
 #### 2.3.2 Hasil Running / Screenshot Output
 
-![Output Percobaan 3](/week%208/assets/Output%20Percobaan%203.png)
+![Output Percobaan 3](assets/output_percobaan3.png)
 
 Output kode awal:
 
@@ -246,34 +287,22 @@ Output kode awal:
 | 1 | 3 | `******` (satu baris, 6 bintang) | `*`, `**`, `***` |
 | 2 | 5 | `***************` (satu baris, 15 bintang) | `*` sampai `*****` |
 
-Output kode akhir untuk n = 5:
-
-```
-*
-**
-***
-****
-*****
-*****
-****
-***
-**
-*
-```
-
 #### 2.3.3 Jawaban Pertanyaan / Pertanyaan Refleksi
 
 - **Langkah 5 (debug `[i=...]`, n = 5):**
   - a. *Outer loop* berjalan **6 kali** (`i` = 0 sampai 5), tidak sama dengan jumlah baris yang diinginkan (5).
-  - b. Saat `i = 0` tercetak **0** bintang karena `j < 0` langsung `false`.
-  - c. Semua karakter tampil dalam satu baris karena tidak ada `System.out.println();`.
+  - b. Saat `i = 0` tercetak variabel `i` nilainya **0** karena `j < 0` jadi langsung `false`.
+  - c. Semua karakter tampil dalam satu baris karena tidak ada `System.out.println();` yang berfungsi untuk pindah baris.
 
 - **Langkah 6:** Setelah `System.out.println();` ditambahkan sebelum `i++`, segitiga mulai terbentuk tetapi masih ada baris kosong di awal (dari `i = 0`). Lalu inisialisasi `int i = 0` diubah menjadi `int i = 1` sehingga perulangan berjalan tepat n kali tanpa baris kosong.
 
-- **Pertanyaan 1:** Sebutkan ketidaksesuaian output awal dan minimal dua perbaikan yang diperlukan.
-  - **Jawab:** Ketidaksesuaiannya: semua bintang berada dalam satu baris, dan ada iterasi tambahan `i = 0` yang menghasilkan baris kosong (total 6 putaran, bukan 5). Perbaikannya: (1) menambahkan `System.out.println();` setelah *inner loop* agar pindah baris, dan (2) mengubah inisialisasi `i` dari 0 menjadi 1 agar *outer loop* berjalan tepat n kali.
+- **Pertanyaan 1:** Sebutkan ketidaksesuaian output awal dan minimal dua perbaikan yang diperlukan untuk menghasilkan pola segitiga bertingkat.
+  - **Jawab:** Ketidaksesuaiannya: semua bintang berada dalam satu baris, dan ada iterasi tambahan `i = 0` yang menghasilkan baris kosong (total 6 putaran, bukan 5).
+  Perbaikannya:
+  - (1) menambahkan `System.out.println();` setelah *inner loop* agar pindah baris
+  - (2) mengubah inisialisasi `i` dari 0 menjadi 1 agar *outer loop* berjalan tepat n kali.
 
-- **Pertanyaan 2:** Jelaskan peran `i` dan `j`. Mengapa `j` harus diinisialisasi kembali ke 0 pada setiap iterasi *outer loop*? Apa yang terjadi jika tidak di-*reset*?
+- **Pertanyaan 2:** Jelaskan peran variabel `i` dan `j`. Mengapa nilai `j` harus diinisialisasi kembali ke 0 pada setiap iterasi *outer loop*? Apa yang terjadi jika tidak di-*reset*?
   - **Jawab:** `i` adalah nomor baris yang menentukan banyaknya bintang pada baris itu, sedangkan `j` adalah penghitung bintang di dalam satu baris. `j` harus di-*reset* karena tiap baris menghitung bintangnya dari awal. Jika `j` tidak di-*reset* (dideklarasikan di luar *outer loop*), nilainya terbawa dari baris sebelumnya: setelah baris 1 `j = 1`, pada baris 2 kondisi `j < 2` hanya benar sekali sehingga hanya 1 bintang tercetak, begitu seterusnya. Akibatnya setiap baris hanya berisi 1 bintang dan segitiga tidak terbentuk.
 
 - **Pertanyaan 3:** Jelaskan perubahan inisialisasi, kondisi, dan *update* pada *outer loop* untuk segitiga terbalik.
@@ -293,23 +322,23 @@ import java.util.Scanner;
 public class NilaiKelompok14 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
+ 
         System.out.print("Masukkan jumlah kelompok : ");
         int jumlahKelompok = sc.nextInt();
         System.out.print("Masukkan jumlah penilai  : ");
         int jumlahPenilai = sc.nextInt();
-
+ 
         if (jumlahKelompok <= 0 || jumlahPenilai <= 0) {
             System.out.println("Jumlah kelompok dan penilai harus > 0.");
         } else {
             int nomorKelompok = 1;          // penghitung outer loop
             double rataTertinggi = -1;      // -1 agar kelompok pertama pasti tercatat
             int kelompokTerbaik = 0;
-
+ 
             while (nomorKelompok <= jumlahKelompok) {
                 System.out.println("Kelompok " + nomorKelompok);
-                double totalNilai = 0;      // di-reset tiap kelompok
-
+                double totalNilai = 0;
+ 
                 for (int j = 1; j <= jumlahPenilai; j++) {
                     int nilai;
                     do {
@@ -321,23 +350,24 @@ public class NilaiKelompok14 {
                     } while (nilai < 0 || nilai > 100);
                     totalNilai += nilai;
                 }
-
+ 
                 double rataNilai = totalNilai / jumlahPenilai;
                 System.out.println("Kelompok " + nomorKelompok
                         + ": nilai rata-rata = " + rataNilai);
-
+ 
                 if (rataNilai > rataTertinggi) {
                     rataTertinggi = rataNilai;
                     kelompokTerbaik = nomorKelompok;
                 }
-
+ 
                 nomorKelompok++;
             }
-
+ 
             System.out.println("==============================");
             System.out.println("Kelompok terbaik    : " + kelompokTerbaik);
             System.out.println("Rata-rata tertinggi : " + rataTertinggi);
         }
+        
         sc.close();
     }
 }
@@ -345,7 +375,7 @@ public class NilaiKelompok14 {
 
 #### 2.4.2 Hasil Running / Screenshot Output
 
-![Output Percobaan 4](/week%208/assets/Output%20Percobaan%204.png)
+![Output Percobaan 4](assets/output_percobaan4.png)
 
 | Uji | Kelompok | Penilai | Input Nilai | Hasil |
 | :-: | :-: | :-: | :-: | :-: |
@@ -355,20 +385,21 @@ public class NilaiKelompok14 {
 
 #### 2.4.3 Jawaban Pertanyaan / Pertanyaan Refleksi
 
-- **Pertanyaan 1:** Mengapa `totalNilai` perlu di-*reset* di dalam *outer loop*, tetapi `rataTertinggi` tidak?
+- **Pertanyaan 1:** Mengapa `totalNilai` perlu di-*reset* di dalam *outer loop*, tetapi `rataTertinggi` tidak boleh di-*reset* pada setiap kelompok?
   - **Jawab:** `totalNilai` adalah jumlah nilai per kelompok sehingga harus mulai dari 0 untuk tiap kelompok. `rataTertinggi` adalah rekor dari seluruh kelompok yang terus dibandingkan; jika di-*reset*, rekor sebelumnya hilang dan kelompok terakhir selalu dianggap terbaik.
 
-- **Pertanyaan 2:** Untuk 3 kelompok dan 2 penilai, berapa kali badan perulangan FOR dijalankan?
-  - **Jawab:** 3 × 2 = **6 kali**.
+- **Pertanyaan 2:** Untuk 3 kelompok dan 2 penilai (tanpa input yang salah), berapa kali badan perulangan `FOR` dijalankan secara keseluruhan?
+  - **Jawab:** Perulangan `FOR` dijalankan sebanyak 3 × 2 = **6 kali**.
 
-- **Pertanyaan 3:** Apa yang terjadi jika `totalNilai` bertipe `int` dan rata-rata dihitung dengan pembagian dua bilangan bulat?
-  - **Jawab:** Hasil pembagian dibulatkan ke bawah (bagian desimal terbuang). Contoh: nilai 80 dan 85 menghasilkan total 165, dan 165 / 2 = **82**, bukan 82.5. Rata-rata menjadi tidak akurat dan bisa memengaruhi penentuan kelompok terbaik.
+- **Pertanyaan 3:** Apa yang terjadi jika `totalNilai` dideklarasikan sebagai `int` dan rata-rata dihitung menggunakan pembagian dua bilangan bulat? Berikan contoh nilai.
+  - **Jawab:** Hasil pembagian dibulatkan ke bawah (bagian desimal terbuang). Contoh: nilai 80 dan 85 menghasilkan total 165, dan 165 / 2 = **82**, bukan 82.5. Rata-rata menjadi tidak akurat dan bisa mempengaruhi penentuan kelompok terbaik.
 
-- **Pertanyaan 4:** Mengapa `rataTertinggi` diberi nilai awal -1, bukan 0?
-  - **Jawab:** Rata-rata terkecil yang mungkin adalah 0. Dengan nilai awal 0, kondisi `rataNilai > rataTertinggi` menjadi `0 > 0` (`false`) sehingga tidak pernah ter-update. Contoh: 2 kelompok, 2 penilai, semua nilai 0, hasilnya `kelompokTerbaik = 0` (kelompok tidak ada). Dengan nilai awal -1, kelompok pertama selalu tercatat.
+- **Pertanyaan 4:** Mengapa `rataTertinggi` diberi nilai awal -1, bukan 0? Berikan contoh input yang membuat hasil salah apabila nilai awalnya 0.
+  - **Jawab:** Rata-rata terkecil yang mungkin adalah 0. Dengan nilai awal 0, kondisi `rataNilai > rataTertinggi` menjadi `0 > 0` (`false`) sehingga tidak pernah ter-update.
+  Contoh: 2 kelompok, 2 penilai, semua nilai 0, hasilnya `kelompokTerbaik = 0` (kelompok tidak ada). Dengan nilai awal -1, kelompok pertama selalu tercatat.
 
-- **Pertanyaan 5:** Sebutkan jenis perulangan pada tiga tingkat beserta perannya.
-  - **Jawab:** `while` (luar) memproses kelompok satu per satu; `for` (tengah) mengulang untuk setiap penilai dalam satu kelompok; `do-while` (dalam) meminta input nilai minimal sekali dan mengulanginya selama nilai di luar 0–100.
+- **Pertanyaan 5:** Program ini memiliki tiga tingkat perulangan. Sebutkan masing-masing jenis perulangan beserta perannya.
+  - **Jawab:** `while` (luar) memproses kelompok satu per satu; `for` (tengah) mengulang untuk setiap penilai dalam satu kelompok; `do-while` (dalam) meminta input nilai minimal sekali dan mengulanginya selama nilai di luar rentang 0–100.
 
 ---
 

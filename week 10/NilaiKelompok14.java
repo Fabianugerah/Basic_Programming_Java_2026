@@ -18,7 +18,7 @@ public class NilaiKelompok14 {
  
             while (nomorKelompok <= jumlahKelompok) {
                 System.out.println("Kelompok " + nomorKelompok);
-                double totalNilai = 0;      // di-reset tiap kelompok
+                double totalNilai = 0;
  
                 for (int j = 1; j <= jumlahPenilai; j++) {
                     int nilai;
@@ -48,6 +48,7 @@ public class NilaiKelompok14 {
             System.out.println("Kelompok terbaik    : " + kelompokTerbaik);
             System.out.println("Rata-rata tertinggi : " + rataTertinggi);
         }
+        
         sc.close();
     }
 }
