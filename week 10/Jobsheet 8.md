@@ -407,13 +407,18 @@ public class NilaiKelompok14 {
 
 Berikut adalah daftar tugas yang dikerjakan pada Jobsheet ini:
 
-- [x] **Tugas 1:** Pola bilangan bertingkat dan total angka yang dicetak. File: `Tugas114.java`.
-- [x] **Tugas 2:** Tabel perkalian n × n (n minimal 3) dan jumlah seluruh angka. File: `Tugas214.java`.
-- [x] **Tugas 3:** Rekap penjualan beberapa toko dan toko dengan barang terbanyak. File: `Tugas314.java`.
+- [x] **Tugas 1: Pola Bilangan Bertingkat**
+Buat program untuk mencetak pola bilangan 1 sampai nomor baris. Masukkan bilangan bulat `n` (`n` minimal 1). Pada baris pertama tercetak 1, pada baris kedua 1 2, dan seterusnya sampai baris ke-`n`. Setelah pola selesai, tampilkan total banyaknya angka yang telah dicetak. Simpan dengan nama file: **Tugas1NoAbsen.java**.
+
+- [x] **Tugas 2: Tabel Perkalian**
+Buat program untuk menampilkan tabel perkalian berukuran `n` × `n` menggunakan `nested FOR` atau `WHILE`. Nilai `n` minimal 3. Setiap posisi menampilkan hasil perkalian nomor baris dan nomor kolom. Atur spasi agar keluaran rapi, lalu tampilkan jumlah seluruh angka pada tabel. Simpan program dengan nama file: **Tugas2NoAbsen.java**.
+
+- [x] **Tugas 3: Rekap Penjualan Beberapa Toko**
+Sebuah pusat perbelanjaan memiliki beberapa toko. Setiap toko melayani sejumlah pelanggan pada hari yang sama, dan setiap pelanggan membeli beberapa barang. Program meminta jumlah toko, kemudian jumlah pelanggan pada masing-masing toko, dan jumlah barang yang dibeli setiap pelanggan. Hitung dan tampilkan total pelanggan serta total barang per toko, total barang seluruh toko, dan nomor toko dengan jumlah barang terbanyak. Jika terdapat nilai tertinggi yang sama, tampilkan toko dengan nomor paling kecil. Simpan program dengan nama file: **Tugas3NoAbsen.java**.
 
 ### 3.1 Tugas 1: Pola Bilangan Bertingkat
 
-Program mencetak pola `1`, `1 2`, `1 2 3`, dan seterusnya sampai baris ke-n, lalu menampilkan total angka yang tercetak.
+Program mencetak pola `1`, `1 2`, `1 2 3`, dan seterusnya sampai baris ke-`n`, lalu menampilkan total angka yang tercetak.
 
 #### 3.1.1 Kode Program Java
 
@@ -423,15 +428,16 @@ import java.util.Scanner;
 public class Tugas114 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.print("Masukkan nilai n = ");
         int n = sc.nextInt();
-
+ 
         if (n < 1) {
             System.out.println("n harus minimal 1.");
         } else {
             int total = 0;
-            for (int i = 1; i <= n; i++) {          // baris
-                for (int j = 1; j <= i; j++) {      // angka 1 sampai i
+            for (int i = 1; i <= n; i++) {
+                for (int j = 1; j <= i; j++) {
                     System.out.print(j);
                     if (j < i) {
                         System.out.print(" ");
@@ -442,6 +448,7 @@ public class Tugas114 {
             }
             System.out.println("Total angka tercetak: " + total);
         }
+
         sc.close();
     }
 }
@@ -456,6 +463,10 @@ public class Tugas114 {
 | 3 | 1 | `1` | 1 |
 | 4 | 0 | "n harus minimal 1." | - |
 
+#### 3.1.3 Hasil Running / Screenshot Output
+
+![Output Tugas 1](assets/output_tugas1.png)
+
 ### 3.2 Tugas 2: Tabel Perkalian
 
 Program menampilkan tabel perkalian n × n dengan nested `for`, format rata kanan memakai `printf("%4d")`, lalu menjumlahkan seluruh angka pada tabel.
@@ -468,15 +479,16 @@ import java.util.Scanner;
 public class Tugas214 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        
         System.out.print("Masukkan nilai n = ");
         int n = sc.nextInt();
-
+ 
         if (n < 3) {
             System.out.println("n harus minimal 3.");
         } else {
             int jumlah = 0;
-            for (int i = 1; i <= n; i++) {          // nomor baris
-                for (int j = 1; j <= n; j++) {      // nomor kolom
+            for (int i = 1; i <= n; i++) { // nomor baris
+                for (int j = 1; j <= n; j++) { // nomor kolom
                     int hasil = i * j;
                     System.out.printf("%4d", hasil);
                     jumlah += hasil;
@@ -485,6 +497,7 @@ public class Tugas214 {
             }
             System.out.println("Jumlah seluruh angka: " + jumlah);
         }
+
         sc.close();
     }
 }
@@ -499,6 +512,10 @@ public class Tugas214 {
 | 3 | 5 | 225 |
 | 4 | 2 | "n harus minimal 3." |
 
+#### 3.2.3 Hasil Running / Screenshot Output
+
+![Output Tugas 2](assets/output_tugas2.png)
+
 ### 3.3 Tugas 3: Rekap Penjualan Beberapa Toko
 
 Program meminta jumlah toko, jumlah pelanggan tiap toko, dan jumlah barang tiap pelanggan (tidak boleh negatif). Hasilnya total pelanggan dan barang per toko, total barang seluruh toko, dan toko dengan barang terbanyak (jika seri, nomor toko terkecil).
@@ -511,16 +528,17 @@ import java.util.Scanner;
 public class Tugas314 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Masukkan jumlah toko: ");
         int jumlahToko = sc.nextInt();
-
+ 
         if (jumlahToko < 1) {
             System.out.println("Jumlah toko minimal 1.");
         } else {
             int totalSemuaBarang = 0;
             int barangTerbanyak = -1;   // -1 agar toko pertama pasti tercatat
             int tokoTerbanyak = 0;
-
+ 
             for (int toko = 1; toko <= jumlahToko; toko++) {
                 int jumlahPelanggan;
                 do {
@@ -530,7 +548,7 @@ public class Tugas314 {
                         System.out.println("  Tidak boleh negatif. Ulangi input!");
                     }
                 } while (jumlahPelanggan < 0);
-
+ 
                 int totalBarangToko = 0;
                 for (int p = 1; p <= jumlahPelanggan; p++) {
                     int barang;
@@ -543,20 +561,21 @@ public class Tugas314 {
                     } while (barang < 0);
                     totalBarangToko += barang;
                 }
-
+ 
                 System.out.println("Toko " + toko + " - pelanggan: " + jumlahPelanggan
                         + ", total barang: " + totalBarangToko);
-
+ 
                 totalSemuaBarang += totalBarangToko;
-                if (totalBarangToko > barangTerbanyak) {    // ">" agar toko bernomor kecil menang saat seri
+                if (totalBarangToko > barangTerbanyak) {
                     barangTerbanyak = totalBarangToko;
                     tokoTerbanyak = toko;
                 }
             }
-
+ 
             System.out.println("Total barang seluruh toko: " + totalSemuaBarang);
             System.out.println("Toko dengan barang terbanyak: " + tokoTerbanyak);
         }
+
         sc.close();
     }
 }
@@ -570,6 +589,10 @@ public class Tugas314 {
 | 2 | Toko 1: 2 pelanggan (2, 2); Toko 2: 1 pelanggan (4) | Total barang sama (4), terbanyak toko 1 |
 | 3 | Toko 1: 0 pelanggan; Toko 2: 1 pelanggan (3) | Toko 1 total 0, Toko 2 total 3, terbanyak toko 2 |
 | 4 | Jumlah barang -2 | "Tidak boleh negatif. Ulangi input!" |
+
+#### 3.3.3 Hasil Running / Screenshot Output
+
+![Output Tugas 3](assets/output_tugas3.png)
 
 ---
 

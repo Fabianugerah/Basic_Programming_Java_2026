@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Tugas314 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         System.out.print("Masukkan jumlah toko: ");
         int jumlahToko = sc.nextInt();
  
@@ -16,7 +17,7 @@ public class Tugas314 {
             for (int toko = 1; toko <= jumlahToko; toko++) {
                 int jumlahPelanggan;
                 do {
-                    System.out.print("Toko " + toko + " - jumlah pelanggan: ");
+                    System.out.print("Toko " + toko + " - Jumlah pelanggan: ");
                     jumlahPelanggan = sc.nextInt();
                     if (jumlahPelanggan < 0) {
                         System.out.println("  Tidak boleh negatif. Ulangi input!");
@@ -36,11 +37,11 @@ public class Tugas314 {
                     totalBarangToko += barang;
                 }
  
-                System.out.println("Toko " + toko + " - pelanggan: " + jumlahPelanggan
-                        + ", total barang: " + totalBarangToko);
+                System.out.println("Toko " + toko + " - Pelanggan: " + jumlahPelanggan
+                        + ", Total barang: " + totalBarangToko);
  
                 totalSemuaBarang += totalBarangToko;
-                if (totalBarangToko > barangTerbanyak) {    // ">" agar toko bernomor kecil menang saat seri
+                if (totalBarangToko > barangTerbanyak) {
                     barangTerbanyak = totalBarangToko;
                     tokoTerbanyak = toko;
                 }
@@ -49,6 +50,7 @@ public class Tugas314 {
             System.out.println("Total barang seluruh toko: " + totalSemuaBarang);
             System.out.println("Toko dengan barang terbanyak: " + tokoTerbanyak);
         }
+
         sc.close();
     }
 }
