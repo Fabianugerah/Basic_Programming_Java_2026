@@ -21,10 +21,8 @@ public class ArrayRataNilai14 {
         int tertinggi = nilaiMhs[0];
         int terendah = nilaiMhs[0];
         for (int i = 1; i < nilaiMhs.length; i++) {
-            if (nilaiMhs[i] > tertinggi)
-                tertinggi = nilaiMhs[i];
-            if (nilaiMhs[i] < terendah)
-                terendah = nilaiMhs[i];
+            if (nilaiMhs[i] > tertinggi) tertinggi = nilaiMhs[i];
+            if (nilaiMhs[i] < terendah) terendah = nilaiMhs[i];
         }
         System.out.println("Nilai tertinggi: " + tertinggi);
         System.out.println("Nilai terendah: " + terendah);
@@ -38,6 +36,15 @@ public class ArrayRataNilai14 {
             predikat = "PERLU PENDAMPINGAN";
         }
         System.out.println("Predikat kelas: " + predikat);
+
+        // Modifikasi Code Pertanyaan 1: Banyaknya mahasiswa yang lulus (nilai > 70)
+        int jumlahLulus = 0;
+        for (int i = 0; i < nilaiMhs.length; i++) {
+            if (nilaiMhs[i] > 70) {
+                jumlahLulus++;
+            }
+        }
+        System.out.println("Jumlah mahasiswa lulus (> 70): " + jumlahLulus);
 
         input.close();
     }

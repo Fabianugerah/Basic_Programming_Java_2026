@@ -2,7 +2,7 @@ public class SearchNilai14 {
     public static void main(String[] args) {
 
         int[] nilai = { 78, 65, 90, 55, 88, 72 };
-        int key = 100;
+        int key = 90;
         boolean ditemukan = false;
 
         for (int i = 0; i < nilai.length; i++) {

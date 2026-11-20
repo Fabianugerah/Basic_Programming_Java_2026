@@ -194,11 +194,9 @@ Berikut adalah tampilan _output_ setelah program dijalankan:
 
 ### 2.3 Percobaan 3: Operasi Aritmatika pada Array - Total, Rata-rata, Nilai Tertinggi dan Terendah
 
-Percobaan ini melanjutkan studi kasus SIAKAD untuk menghasilkan ringkasan nilai mahasiswa: total, rata-rata, nilai tertinggi, nilai terendah, dan predikat kelas (rata-rata >= 85 "SANGAT BAIK", >= 70 "BAIK", selebihnya "PERLU PENDAMPINGAN"). Kode juga memuat modifikasi Pertanyaan 1 (jumlah mahasiswa lulus), sedangkan modifikasi Pertanyaan 2 dibuat pada file terpisah.
+Percobaan ini melanjutkan studi kasus SIAKAD untuk menghasilkan ringkasan nilai mahasiswa, sebagaimana biasa ditampilkan pada rekap nilai akhir semester. Kode juga memuat modifikasi Pertanyaan 1 (jumlah mahasiswa lulus).
 
 #### 2.3.1 Kode Program Java
-
-**ArrayRataNilai14.java**
 
 ```java
 import java.util.Scanner;
@@ -207,24 +205,20 @@ public class ArrayRataNilai14 {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
-        // Langkah 3
         int[] nilaiMhs = new int[10];
         int total = 0;
         double rata2;
 
-        // Langkah 4: isi array sekaligus akumulasikan total
         for (int i = 0; i < nilaiMhs.length; i++) {
             System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + ": ");
             nilaiMhs[i] = input.nextInt();
             total += nilaiMhs[i];
         }
 
-        // Langkah 5: total dan rata-rata
         rata2 = (double) total / nilaiMhs.length;
         System.out.println("Total nilai: " + total);
         System.out.println("Rata-rata: " + rata2);
 
-        // Langkah 6: nilai tertinggi dan terendah
         int tertinggi = nilaiMhs[0];
         int terendah = nilaiMhs[0];
         for (int i = 1; i < nilaiMhs.length; i++) {
@@ -234,7 +228,6 @@ public class ArrayRataNilai14 {
         System.out.println("Nilai tertinggi: " + tertinggi);
         System.out.println("Nilai terendah: " + terendah);
 
-        // Langkah 7: predikat kelas berdasarkan rata-rata
         String predikat;
         if (rata2 >= 85) {
             predikat = "SANGAT BAIK";
@@ -245,7 +238,7 @@ public class ArrayRataNilai14 {
         }
         System.out.println("Predikat kelas: " + predikat);
 
-        // ===== Modifikasi Pertanyaan 1: banyaknya mahasiswa yang lulus (nilai > 70) =====
+        // Modifikasi Code Pertanyaan 1: Banyaknya mahasiswa yang lulus (nilai > 70)
         int jumlahLulus = 0;
         for (int i = 0; i < nilaiMhs.length; i++) {
             if (nilaiMhs[i] > 70) {
@@ -259,53 +252,11 @@ public class ArrayRataNilai14 {
 }
 ```
 
-**ArrayRataNilaiDinamis14.java** (modifikasi Pertanyaan 2: jumlah elemen dari input pengguna)
+#### 2.3.2 Hasil Running / Screenshot Output
 
-```java
-import java.util.Scanner;
+Berikut adalah tampilan _output_ setelah program dijalankan:
 
-// Modifikasi Pertanyaan 2 (Percobaan 3): jumlah elemen array ditentukan oleh input pengguna
-public class ArrayRataNilaiDinamis14 {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Masukkan jumlah mahasiswa: ");
-        int jumlah = input.nextInt();
-
-        int[] nilaiMhs = new int[jumlah];
-        int total = 0;
-
-        for (int i = 0; i < nilaiMhs.length; i++) {
-            System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + ": ");
-            nilaiMhs[i] = input.nextInt();
-            total += nilaiMhs[i];
-        }
-
-        double rata2 = (double) total / nilaiMhs.length;
-
-        int tertinggi = nilaiMhs[0];
-        int terendah = nilaiMhs[0];
-        for (int i = 1; i < nilaiMhs.length; i++) {
-            if (nilaiMhs[i] > tertinggi) tertinggi = nilaiMhs[i];
-            if (nilaiMhs[i] < terendah) terendah = nilaiMhs[i];
-        }
-
-        System.out.println("Total nilai: " + total);
-        System.out.println("Rata-rata: " + rata2);
-        System.out.println("Nilai tertinggi: " + tertinggi);
-        System.out.println("Nilai terendah: " + terendah);
-
-        input.close();
-    }
-}
-```
-
-#### 2.3.2 Tabel Pengujian Parameter Output
-
-| Uji | Program | Data Nilai | Total | Rata-rata | Tertinggi | Terendah | Keterangan |
-| :-: | :-: | :-: | :-: | :-: | :-: | :-: | :-: |
-| 1 | ArrayRataNilai14 | 85, 60, 72, 90, 45, 78, 66, 95, 50, 71 | 712 | 71.2 | 95 | 45 | Predikat BAIK, lulus 6 |
-| 2 | ArrayRataNilaiDinamis14 | 80, 70, 90 (jumlah mahasiswa 3) | 240 | 80.0 | 90 | 70 | Jumlah elemen sesuai input |
+![Output Percobaan 3](assets/output_percobaan3.png)
 
 #### 2.3.3 Jawaban Pertanyaan / Pertanyaan Refleksi
 
@@ -313,79 +264,74 @@ public class ArrayRataNilaiDinamis14 {
   - **Jawab:** Ditambahkan variabel `jumlahLulus` bernilai awal 0, lalu perulangan `for` dengan `if (nilaiMhs[i] > 70) { jumlahLulus++; }`. Untuk data uji 1 hasilnya adalah 6 mahasiswa.
 
 - **Pertanyaan 2:** Modifikasi program di atas sehingga program menerima jumlah elemen array berdasarkan input dari pengguna (tidak selalu 10), lalu tetap dapat menghitung total, rata-rata, nilai tertinggi, dan nilai terendah dengan benar.
-  - **Jawab:** Jumlah mahasiswa dibaca terlebih dahulu ke variabel `jumlah`, lalu array dibuat dengan `new int[jumlah]`. Seluruh perulangan memakai `nilaiMhs.length` sebagai batas (bukan angka 10), sehingga perhitungan tetap benar berapa pun ukurannya (lihat `ArrayRataNilaiDinamis14.java`).
+  - **Jawab:** Jumlah mahasiswa dibaca terlebih dahulu ke variabel `jumlah`, lalu array dibuat dengan `new int[jumlah]`. Seluruh perulangan memakai `nilaiMhs.length` sebagai batas (bukan angka 10), sehingga perhitungan tetap benar berapa pun ukurannya.
+
+  **Kode Program:**
+  **ArrayRataNilaiDinamis14.java:**
+
+    ```java
+    import java.util.Scanner;
+
+    public class ArrayRataNilaiDinamis14 {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+
+            System.out.print("Masukkan jumlah mahasiswa: ");
+            int jumlah = input.nextInt();
+
+            int[] nilaiMhs = new int[jumlah];
+            int total = 0;
+
+            for (int i = 0; i < nilaiMhs.length; i++) {
+                System.out.print("Masukkan nilai mahasiswa ke-" + (i + 1) + ": ");
+                nilaiMhs[i] = input.nextInt();
+                total += nilaiMhs[i];
+            }
+
+            double rata2 = (double) total / nilaiMhs.length;
+
+            int tertinggi = nilaiMhs[0];
+            int terendah = nilaiMhs[0];
+            for (int i = 1; i < nilaiMhs.length; i++) {
+                if (nilaiMhs[i] > tertinggi) tertinggi = nilaiMhs[i];
+                if (nilaiMhs[i] < terendah) terendah = nilaiMhs[i];
+            }
+
+            System.out.println("Total nilai: " + total);
+            System.out.println("Rata-rata: " + rata2);
+            System.out.println("Nilai tertinggi: " + tertinggi);
+            System.out.println("Nilai terendah: " + terendah);
+
+            input.close();
+        }
+    }
+    ```
+
+    **Output Program:**
+
+    ![Output Pertanyaan 2 Percobaan 3](assets/output_pert2_perc3.png)
 
 - **Pertanyaan 3:** Mengapa pada perhitungan rata-rata digunakan `(double) total / nilaiMhs.length`, bukan langsung `total / nilaiMhs.length`? Jelaskan!
-  - **Jawab:** `total` dan `nilaiMhs.length` sama-sama bertipe `int`, sehingga `total / nilaiMhs.length` adalah pembagian bilangan bulat yang membuang bagian desimal. Pada data uji 1, `712 / 10` menghasilkan `71`, bukan `71.2`. Dengan `(double) total`, nilai `total` diubah (casting) menjadi `double` sebelum dibagi, sehingga hasil pembagian ikut bertipe `double` dan menyimpan desimalnya (`71.2`). Casting harus dilakukan pada `total` sebelum pembagian, bukan pada hasilnya.
+  - **Jawab:** Karena `total` dan `nilaiMhs.length` sama-sama bertipe `int`, sehingga `total / nilaiMhs.length` adalah pembagian bilangan bulat yang membuang bagian desimal. Jadi nanti saat dibagi yang seharusnya ada nilai desimal jadinya tidak ada desimalnya karena nilai bertipe `int` atau bilangan bulat dan harus dicasting ke nilai `double` (desimal) terlebih dahulu agar hasil akhirnya sesuai dengan hasil pembagiannya.
 
 ---
 
 ### 2.4 Percobaan 4: Pencarian (Searching) dan Pengurutan (Sorting) Sederhana
 
-Percobaan ini menerapkan algoritma linear search (Bagian A) untuk mencari sebuah nilai (key) pada array, dan bubble sort (Bagian B) untuk mengurutkan array dari nilai terkecil ke terbesar. Data uji yang dipakai adalah array `{78, 65, 90, 55, 88, 72}`.
+Percobaan ini menerapkan algoritma pencarian dan pengurutan sederhana pada data nilai mahasiswa, dua kemampuan dasar yang banyak dipakai dalam pengolahan data nyata.
 
 #### 2.4.1 Kode Program Java
 
-**SearchNilai14.java** (Bagian A: linear search dengan key 90 dan 100)
+**SearchNilai14.java** (Bagian A - Linear Search)
 
 ```java
 public class SearchNilai14 {
     public static void main(String[] args) {
-        int[] nilai = {78, 65, 90, 55, 88, 72};
 
-        // key pertama ada di dalam array, key kedua tidak ada (sesuai contoh hasil acuan)
-        int[] daftarKey = {90, 100};
-
-        for (int k = 0; k < daftarKey.length; k++) {
-            int key = daftarKey[k];
-            boolean ditemukan = false;
-
-            if (k > 0) {
-                System.out.println();
-                System.out.println("--- dicoba lagi dengan key = " + key + " ---");
-            }
-
-            // Linear search
-            for (int i = 0; i < nilai.length; i++) {
-                if (nilai[i] == key) {
-                    System.out.println("Nilai " + key + " ditemukan pada indeks ke-" + i);
-                    ditemukan = true;
-                    break;
-                }
-            }
-            if (!ditemukan) {
-                System.out.println("Nilai " + key + " tidak ditemukan.");
-            }
-        }
-    }
-}
-```
-
-**SearchNilaiInput14.java** (modifikasi Bagian A Pertanyaan 2 dan 3)
-
-```java
-import java.util.Arrays;
-import java.util.Scanner;
-
-// Modifikasi Pertanyaan 2 dan 3 (Percobaan 4 Bagian A):
-// banyak elemen, isi array, dan key diinput pengguna, dengan pesan tidak ditemukan yang informatif
-public class SearchNilaiInput14 {
-    public static void main(String[] args) {
-        Scanner input = new Scanner(System.in);
-
-        System.out.print("Masukkan banyaknya elemen array: ");
-        int jumlah = input.nextInt();
-
-        int[] nilai = new int[jumlah];
-        for (int i = 0; i < nilai.length; i++) {
-            System.out.print("Masukkan elemen ke-" + (i + 1) + ": ");
-            nilai[i] = input.nextInt();
-        }
-
-        System.out.print("Masukkan nilai yang dicari (key): ");
-        int key = input.nextInt();
-
+        int[] nilai = { 78, 65, 90, 55, 88, 72 };
+        int key = 100;
         boolean ditemukan = false;
+
         for (int i = 0; i < nilai.length; i++) {
             if (nilai[i] == key) {
                 System.out.println("Nilai " + key + " ditemukan pada indeks ke-" + i);
@@ -393,27 +339,21 @@ public class SearchNilaiInput14 {
                 break;
             }
         }
-
         if (!ditemukan) {
-            System.out.println("Nilai yang dicari tidak ditemukan: nilai " + key
-                    + " tidak ada di dalam array " + Arrays.toString(nilai));
+            System.out.println("Nilai " + key + " tidak ditemukan.");
         }
-
-        input.close();
     }
 }
 ```
 
-**SortNilai14.java** (Bagian B: bubble sort ascending)
+**SortNilai14.java** (Bagian B - Bubble Sort)
 
 ```java
 import java.util.Arrays;
 
 public class SortNilai14 {
     public static void main(String[] args) {
-        int[] nilai = {78, 65, 90, 55, 88, 72};
-
-        // Bubble sort ascending (terkecil ke terbesar)
+        int[] nilai = { 78, 65, 90, 55, 88, 72 };
         for (int i = 0; i < nilai.length - 1; i++) {
             for (int j = 0; j < nilai.length - 1 - i; j++) {
                 if (nilai[j] > nilai[j + 1]) {
@@ -428,57 +368,112 @@ public class SortNilai14 {
 }
 ```
 
-**SortNilaiDesc14.java** (modifikasi Bagian B Pertanyaan 5: descending)
+#### 2.4.2 Hasil Running / Screenshot Output
 
-```java
-import java.util.Arrays;
+Berikut adalah tampilan _output_ setelah program dijalankan:
 
-// Modifikasi Pertanyaan 5 (Percobaan 4 Bagian B): bubble sort descending (terbesar ke terkecil)
-public class SortNilaiDesc14 {
-    public static void main(String[] args) {
-        int[] nilai = {78, 65, 90, 55, 88, 72};
+**SearchNilai14.java** (Bagian A - Linear Search)
+![Output Percobaan 4 - Bagian A](assets/output_percobaan4a.png)
 
-        System.out.println("Sebelum diurutkan: " + Arrays.toString(nilai));
-
-        for (int i = 0; i < nilai.length - 1; i++) {
-            for (int j = 0; j < nilai.length - 1 - i; j++) {
-                if (nilai[j] < nilai[j + 1]) {   // tanda dibalik dari > menjadi <
-                    int temp = nilai[j];
-                    nilai[j] = nilai[j + 1];
-                    nilai[j + 1] = temp;
-                }
-            }
-        }
-
-        System.out.println("Sesudah diurutkan (descending): " + Arrays.toString(nilai));
-    }
-}
-```
-
-#### 2.4.2 Tabel Pengujian Parameter Output
-
-| Uji | Program | Input / Data | Status Eksekusi |
-| :-: | :-: | :-: | :-: |
-| 1 | SearchNilai14 | key = 90 | Nilai 90 ditemukan pada indeks ke-2 |
-| 2 | SearchNilai14 | key = 100 | Nilai 100 tidak ditemukan. |
-| 3 | SearchNilaiInput14 | array {10, 20, 30, 40}, key = 30 | Nilai 30 ditemukan pada indeks ke-2 |
-| 4 | SearchNilaiInput14 | array {10, 20, 30, 40}, key = 100 | Nilai yang dicari tidak ditemukan: nilai 100 tidak ada di dalam array [10, 20, 30, 40] |
-| 5 | SortNilai14 | {78, 65, 90, 55, 88, 72} | [55, 65, 72, 78, 88, 90] |
-| 6 | SortNilaiDesc14 | {78, 65, 90, 55, 88, 72} | [90, 88, 78, 72, 65, 55] |
+**SortNilai14.java** (Bagian B - Bubble Sort)
+![Output Percobaan 4 - Bagian B](assets/output_percobaan4b.png)
 
 #### 2.4.3 Jawaban Pertanyaan / Pertanyaan Refleksi
 
 - **Pertanyaan 1:** Jelaskan maksud dari statement `break;` pada kode program Bagian A di atas!
-  - **Jawab:** `break;` menghentikan perulangan `for` seketika saat nilai yang dicari sudah ditemukan. Elemen sisanya tidak perlu diperiksa lagi, sehingga pencarian lebih efisien dan program hanya melaporkan indeks kemunculan pertama. Tanpa `break`, perulangan tetap berjalan sampai elemen terakhir dan akan melaporkan setiap kemunculan key.
+  - **Jawab:** `break;` menghentikan perulangan `for` seketika saat nilai yang dicari sudah ditemukan. Elemen sisanya tidak perlu diperiksa lagi, sehingga pencarian lebih efisien dan program hanya menampilkan indeks kemunculan pertama. Tanpa `break`, perulangan tetap berjalan sampai elemen terakhir dan akan menampilkan setiap kemunculan key.
 
-- **Pertanyaan 2:** Modifikasi kode program Bagian A sehingga program dapat menerima input berupa banyaknya elemen array `nilai`, isi array, dan sebuah nilai (key) yang ingin dicari dari pengguna, lalu mencetak indeks posisi elemen dari nilai (key) tersebut.
-  - **Jawab:** Banyaknya elemen dibaca ke variabel `jumlah`, array dibuat dengan `new int[jumlah]`, lalu diisi lewat perulangan dan key dibaca dari input. Linear search yang sama dipakai untuk mencetak indeks key (lihat `SearchNilaiInput14.java`).
+- **Pertanyaan 2:** Modifikasi kode program Bagian A sehingga program dapat menerima input berupa banyaknya elemen array nilai, isi array, dan sebuah nilai `(key)` yang ingin dicari dari pengguna, lalu mencetak indeks posisi elemen dari nilai `(key)` tersebut.
+  - **Jawab:**
+  **Kode Program:**
+  **SearchNilaiInput14:**
 
-- **Pertanyaan 3:** Modifikasi program Bagian A agar menampilkan pesan "Nilai yang dicari tidak ditemukan" dengan format pesan yang lebih informatif apabila nilai yang dicari (key) tidak ada di dalam array.
-  - **Jawab:** Jika `ditemukan` tetap `false` setelah perulangan, program menampilkan pesan yang menyebut key dan isi array, misalnya `Nilai yang dicari tidak ditemukan: nilai 100 tidak ada di dalam array [10, 20, 30, 40]`. Isi array ditampilkan dengan `Arrays.toString()`.
+    ```java
+    import java.util.Scanner;
+
+    public class SearchNilaiInput14 {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+
+            System.out.print("Masukkan banyaknya elemen array: ");
+            int jumlah = input.nextInt();
+
+            int[] nilai = new int[jumlah];
+            for (int i = 0; i < nilai.length; i++) {
+                System.out.print("Masukkan elemen ke-" + (i + 1) + ":");
+                nilai[i] = input.nextInt();
+            }
+
+            System.out.print("Masukkan nilai yang dicari (key): ");
+            int key = input.nextInt();
+
+            for (int i = 0; i < nilai.length; i++) {
+                if (nilai[i] == key) {
+                    System.out.println("Nilai " + key + " ditemukanpada indeks ke-" + i);
+                    break;
+                }
+            }
+
+            input.close();
+        }
+    }
+    ```
+
+    **Output Program:**
+
+    ![Output Pertanyaan 2 Percobaan 4](assets/output_pert2_perc4.png)
+
+- **Pertanyaan 3:** Modifikasi program Bagian A agar menampilkan pesan `"Nilai yang dicari tidak ditemukan"` dengan format pesan yang lebih informatif apabila nilai yang dicari `(key)` tidak ada di dalam array.
+  - **Jawab:**
+  **Kode Program:**
+  **SearchNilaiInput14:**
+
+    ```java
+    import java.util.Arrays;
+    import java.util.Scanner;
+
+    public class SearchNilaiInput14 {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);
+
+            System.out.print("Masukkan banyaknya elemen array: ");
+            int jumlah = input.nextInt();
+
+            int[] nilai = new int[jumlah];
+            for (int i = 0; i < nilai.length; i++) {
+                System.out.print("Masukkan elemen ke-" + (i + 1) + ": ");
+                nilai[i] = input.nextInt();
+            }
+
+            System.out.print("Masukkan nilai yang dicari (key): ");
+            int key = input.nextInt();
+
+            boolean ditemukan = false;
+            for (int i = 0; i < nilai.length; i++) {
+                if (nilai[i] == key) {
+                    System.out.println("Nilai " + key + " ditemukan pada indeks ke-" + i);
+                    ditemukan = true;
+                    break;
+                }
+            }
+
+            if (!ditemukan) {
+                System.out.println("Nilai yang dicari tidak ditemukan: nilai " + key
+                        + " tidak ada di dalam array " + Arrays.toString(nilai));
+            }
+
+            input.close();
+        }
+    }
+    ```
+
+    **Output Program:**
+
+    ![Output Pertanyaan 3 Percobaan 4](assets/output_pert3_perc4.png)
 
 - **Pertanyaan 4:** Jelaskan langkah demi langkah cara kerja algoritma bubble sort pada Bagian B menggunakan data ujicoba yang tersedia!
-  - **Jawab:** Bubble sort membandingkan dua elemen bersebelahan (`nilai[j]` dan `nilai[j + 1]`) dan menukarnya jika urutannya salah (kiri lebih besar dari kanan). Perulangan luar (`i`) menentukan banyaknya putaran (`panjang - 1`), sedangkan perulangan dalam (`j`) melakukan perbandingan, dengan batas `panjang - 1 - i` karena `i` elemen terbesar di ujung kanan sudah berada di posisi akhir. Pada data `{78, 65, 90, 55, 88, 72}`:
+  - **Jawab:** Bubble sort membandingkan dua elemen bersebelahan (`nilai[j]` dan `nilai[j + 1]`) dan menukarnya jika urutannya salah (kiri lebih besar dari kanan). Perulangan luar (`i`) menentukan banyaknya putaran (`panjang - 1`), sedangkan perulangan dalam (`j`) melakukan perbandingan, dengan batas `panjang - 1 - i` karena `i` elemen terbesar di ujung kanan sudah berada di posisi akhir.
+  Pada data `{78, 65, 90, 55, 88, 72}`:
 
     | Putaran (i) | Proses Perbandingan dan Penukaran | Isi Array Setelah Putaran |
     | :-: | :-- | :-: |
@@ -488,10 +483,40 @@ public class SortNilaiDesc14 {
     | 3 | 55>65 tidak; 65>72 tidak | [55, 65, 72, 78, 88, 90] |
     | 4 | 55>65 tidak | [55, 65, 72, 78, 88, 90] |
 
-    Setelah putaran terakhir, array terurut menaik: `[55, 65, 72, 78, 88, 90]`. Proses penukaran memakai variabel sementara `temp` agar nilai tidak hilang.
+    Setelah putaran terakhir, array terurut menaik: `[55, 65, 72, 78, 88, 90]`. Proses penukaran ini memakai variabel sementara yaitu `temp` agar nilai tidak hilang.
 
 - **Pertanyaan 5:** Modifikasi program Bagian B agar mengurutkan array dari nilai terbesar ke terkecil (descending), bukan dari terkecil ke terbesar.
-  - **Jawab:** Cukup membalik tanda perbandingan pada kondisi penukaran dari `nilai[j] > nilai[j + 1]` menjadi `nilai[j] < nilai[j + 1]`. Dengan begitu elemen yang lebih kecil dipindahkan ke kanan, dan hasilnya `[90, 88, 78, 72, 65, 55]` (lihat `SortNilaiDesc14.java`).
+  - **Jawab:**
+  **Kode Program:**
+  **SearchNilaiInput14:**
+
+    ```java
+    import java.util.Arrays;
+
+    public class SortNilaiDesc14 {
+        public static void main(String[] args) {
+            int[] nilai = {78, 65, 90, 55, 88, 72};
+
+            System.out.println("Mengurutkan dari nilai terkecil ke terbesar: " + Arrays.toString(nilai));
+
+            for (int i = 0; i < nilai.length - 1; i++) {
+                for (int j = 0; j < nilai.length - 1 - i; j++) {
+                    if (nilai[j] < nilai[j + 1]) {   // tanda dibalik dari > menjadi <
+                        int temp = nilai[j];
+                        nilai[j] = nilai[j + 1];
+                        nilai[j + 1] = temp;
+                    }
+                }
+            }
+
+            System.out.println("Mengurutkan dari nilai terbesar ke terkecil: " + Arrays.toString(nilai));
+        }
+    }
+    ```
+
+    **Output Program:**
+
+    ![Output Pertanyaan 5 Percobaan 4](assets/output_pert5_perc4.png)
 
 ---
 
@@ -499,8 +524,14 @@ public class SortNilaiDesc14 {
 
 Berikut adalah daftar tugas yang dikerjakan pada Jobsheet ini:
 
-- [x] **Tugas 1:** Buat program pengelolaan nilai mahasiswa (bilangan bulat) yang dapat memasukkan banyaknya nilai, memasukkan setiap nilai satu per satu, menghitung rata-rata, menampilkan nilai tertinggi dan terendah, serta menampilkan semua nilai beserta status kelulusannya (LULUS / TIDAK LULUS).
-- [x] **Tugas 2:** Buat program aplikasi pemesanan kafe kampus dengan daftar menu dan harga dalam array, fitur pencarian menu (linear search), fitur pemesanan dengan validasi menu dan penyimpanan nama pesanan pada array terpisah, perhitungan total biaya, serta tampilan daftar pesanan yang rapi.
+- [x] **Tugas 1:** Buatlah program yang dapat menyimpan dan mengelola nilai mahasiswa (bilangan bulat). Program harus menyediakan fitur untuk:
+  - Memasukkan banyaknya nilai mahasiswa yang akan diinput.
+  - Memasukkan setiap nilai mahasiswa satu per satu.
+  - Menghitung nilai rata-rata dari seluruh nilai yang dimasukkan.
+  - Menampilkan nilai tertinggi dan nilai terendah.
+  - Menampilkan semua nilai yang telah dimasukkan, beserta status kelulusannya (LULUS / TIDAK LULUS).
+
+- [x] **Tugas 2:** Buat program yang dapat mengelola pemesanan makanan dan minuman di kafe kampus. Program menyediakan daftar menu yang sudah ditentukan, memungkinkan pengguna memilih menu melalui fitur pencarian, mencatat pesanan, serta menghitung total biaya.
 
 ### 4.1 Tugas 1: Pengelolaan Nilai Mahasiswa
 
